@@ -1,0 +1,142 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  z-index: 1000;
+  transition: var(--transition-normal);
+  background: transparent;
+}
+
+.header.scrolled {
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo:hover .logo-image {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  border-radius: 4px;
+  animation: logo-zigzag 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Zigzag: starts at origin, moves left-down, right-up, left-down, right-up loop */
+@keyframes logo-zigzag {
+  0%   { transform: translate(0px,   0px)  rotate(0deg); }
+  12%  { transform: translate(-14px, 6px)  rotate(-4deg); }
+  25%  { transform: translate(0px,   12px) rotate(0deg); }
+  37%  { transform: translate(-14px, 6px)  rotate(-4deg); }
+  50%  { transform: translate(0px,   0px)  rotate(0deg); }
+  62%  { transform: translate(-14px, -6px) rotate(4deg); }
+  75%  { transform: translate(0px,   -12px) rotate(0deg); }
+  87%  { transform: translate(-14px, -6px) rotate(4deg); }
+  100% { transform: translate(0px,   0px)  rotate(0deg); }
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  opacity: 0.8;
+  transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--accent-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Minimum 44×44px tap target as recommended by Apple/Google */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+@media (max-width: 992px) {
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .header-actions .btn {
+    display: none;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--glass-border);
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}

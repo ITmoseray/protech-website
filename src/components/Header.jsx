@@ -47,9 +47,6 @@ const Header = ({ openEstimator }) => {
         <a href="#" className="logo">
           <div className="logo-wrapper">
             <img src="/logo.jpeg" alt="Protech Assist Logo" className="logo-image" />
-            <div className="football-scene">
-              <img src="/real-ball.png" alt="Football" className="real-soccer-ball" />
-            </div>
           </div>
           <span className="logo-text">Protech <span className="text-gradient">Assist</span></span>
         </a>

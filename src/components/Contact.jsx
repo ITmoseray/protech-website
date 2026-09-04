@@ -49,7 +49,7 @@ const Contact = () => {
                 <div className="contact-icon" style={{ color: '#25D366' }}>💬</div>
                 <div>
                   <h4>WhatsApp</h4>
-                  <p><a href="https://wa.me/23234955581" target="_blank" rel="noopener noreferrer" className="whatsapp-link">+232 34 955581</a></p>
+                  <p><a href="https://wa.me/23273019699" target="_blank" rel="noopener noreferrer" className="whatsapp-link">+232 34 955581</a></p>
                 </div>
               </div>
             </div>

@@ -17,10 +17,107 @@
   gap: 10px;
 }
 
+.logo-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.football-scene {
+  position: absolute;
+  left: -35px;
+  bottom: 5px;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.real-soccer-ball {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transform-origin: center center;
+  animation: real-ball-bounce 2s infinite ease-in-out;
+}
+
 .logo-image {
   height: 40px;
   width: auto;
   border-radius: 4px;
+  transform-origin: bottom center;
+  animation: logo-wiggle-loop 1.6s ease-in-out infinite;
+}
+
+.logo:hover .logo-image {
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.logo:hover .real-soccer-ball {
+  filter: drop-shadow(0 0 6px var(--accent-glow)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Tap & Focus Responsiveness: Double speed when tapped/clicked */
+.logo:active .real-soccer-ball,
+.logo:focus .real-soccer-ball {
+  animation-duration: 0.8s;
+}
+
+.logo:active .logo-image,
+.logo:focus .logo-image {
+  animation-duration: 0.8s;
+}
+
+@keyframes real-ball-bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg) scale(1.05);
+  }
+}
+
+@keyframes ball-kick-loop {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(-1px, 0) rotate(-30deg);
+  }
+  42% {
+    transform: translate(25px, -6px) rotate(180deg); /* Longer kick arc */
+  }
+  45% {
+    transform: translate(26px, 0) rotate(210deg); /* Hits logo */
+  }
+  65% {
+    transform: translate(12px, -3px) rotate(360deg); /* Rebounds */
+  }
+  80% {
+    transform: translate(0, 0) rotate(540deg); /* Rolls back */
+  }
+}
+
+@keyframes logo-wiggle-loop {
+  0%, 42% {
+    transform: scale(1) rotate(0deg);
+  }
+  45% {
+    transform: scale(0.93, 1.07) rotate(3deg) translateX(1px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) rotate(-2deg);
+  }
+  55% {
+    transform: scale(0.98, 1.02) rotate(1deg);
+  }
+  60%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .logo-text {
@@ -107,6 +204,12 @@
   }
   .footer-brand {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin-left: 45px;
   }
 }
 

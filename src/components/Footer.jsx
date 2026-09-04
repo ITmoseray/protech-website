@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './Footer.css';
 
+const getInventoryLink = () => {
+  return 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/';
+};
+
 const Footer = () => {
   const [legalModal, setLegalModal] = useState(null); // 'privacy' | 'terms' | null
 
@@ -30,7 +34,12 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="logo">
-              <img src="/logo.jpeg" alt="Protech Assist Logo" className="logo-image" />
+              <div className="logo-wrapper">
+                <img src="/logo.jpeg" alt="Protech Assist Logo" className="logo-image" />
+                <div className="football-scene">
+                  <img src="/real-ball.png" alt="Football" className="real-soccer-ball" />
+                </div>
+              </div>
               <span className="logo-text">Protech <span className="text-gradient">Assist</span></span>
             </div>
             <p className="footer-desc">
@@ -58,7 +67,7 @@ const Footer = () => {
             <ul>
               <li><a href="#" onClick={(e) => handleServiceClick(e, 'Software Development')}>Software Development</a></li>
               <li><a href="#" onClick={(e) => handleServiceClick(e, 'Website')}>Web Applications</a></li>
-              <li><a href="#" onClick={(e) => handleServiceClick(e, 'Inventory')}>Inventory OS</a></li>
+              <li><a href={getInventoryLink()} target="_blank" rel="noopener noreferrer">Inventory Enterprise OS ↗</a></li>
               <li><a href="#" onClick={(e) => handleServiceClick(e, 'Consulting')}>IT Consulting</a></li>
             </ul>
           </div>

@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
+const getInventoryLink = () => {
+  return 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/';
+};
+
 const Hero = ({ openEstimator }) => {
   const words = ['Smart Technology', 'Custom Software', 'Modern Websites', 'Enterprise ERPs', 'AI Integrations'];
   const [wordIndex, setWordIndex] = useState(0);
@@ -109,6 +113,14 @@ company.optimize({
           <div className="hero-buttons delay-200">
             <button className="btn btn-primary" onClick={openEstimator}>Request a Demo</button>
             <button className="btn btn-secondary" onClick={() => document.getElementById('contact').scrollIntoView()}>Contact Us</button>
+            <a 
+              href={getInventoryLink()} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-secondary"
+            >
+              Inventory Enterprise OS ↗
+            </a>
           </div>
         </div>
         

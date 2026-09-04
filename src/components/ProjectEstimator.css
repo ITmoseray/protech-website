@@ -23,14 +23,11 @@
   border-radius: 16px;
   width: 100%;
   max-width: 750px;
-  /* Single scroll container — allows reaching footer buttons on small screens */
   max-height: 92vh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
-  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
 }
 
 .estimator-close-btn {
@@ -72,7 +69,7 @@
 .estimator-body {
   padding: 2.5rem;
   flex-grow: 1;
-  /* No overflow-y here — the parent .estimator-content handles scrolling */
+  overflow-y: auto;
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -366,6 +363,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 /* Animation */
@@ -411,7 +409,6 @@
   }
   .estimator-content {
     max-height: 90vh;
-    overflow-y: auto;
   }
 }
 

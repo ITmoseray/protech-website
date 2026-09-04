@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Services.css';
 
+const getInventoryLink = () => {
+  return 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/';
+};
+
 const services = [
   {
     title: 'Mobile Application Development',
@@ -140,17 +144,28 @@ const Services = ({ openSandbox }) => {
                 ))}
               </ul>
               {service.title === 'Enterprise Resource Planning (ERP) Systems' ? (
-                <button 
-                  className="btn btn-secondary btn-small" 
-                  style={{ marginTop: 'auto', width: '100%', fontSize: '0.85rem' }} 
-                  onClick={openSandbox}
-                >
-                  ⚡ Try Live Demo
-                </button>
+                <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
+                  <button 
+                    className="btn btn-secondary btn-small" 
+                    style={{ width: '100%', fontSize: '0.85rem', padding: '0.5rem 1rem' }} 
+                    onClick={openSandbox}
+                  >
+                    ⚡ Try Simulation Demo
+                  </button>
+                  <a 
+                    href={getInventoryLink()} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-small" 
+                    style={{ width: '100%', fontSize: '0.85rem', padding: '0.5rem 1rem', textDecoration: 'none', textAlign: 'center' }}
+                  >
+                    🌐 Inventory Enterprise OS (Live) ↗
+                  </a>
+                </div>
               ) : (
                 <button 
                   className="btn btn-secondary btn-small" 
-                  style={{ marginTop: 'auto', width: '100%', fontSize: '0.85rem' }} 
+                  style={{ marginTop: 'auto', width: '100%', fontSize: '0.85rem', padding: '0.5rem 1rem' }} 
                   onClick={() => document.getElementById('contact').scrollIntoView()}
                 >
                   Inquire Now

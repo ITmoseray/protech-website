@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './Portfolio.css';
+
+const getInventoryLink = () => {
+  return 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/';
+};
 import image1 from '../1.png';
 import imageERP from '../erp_dashboard.png';
 import imageFinance from '../financial_analytics.png';
@@ -11,7 +15,9 @@ const portfolioItems = [
     image: imageERP,
     description: 'A comprehensive, custom-built ERP system designed to centralize and automate business operations. It integrates inventory management, sales processing, HR payroll, and real-time financial analytics in a single secure platform.',
     tech: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
-    features: ['Real-time stock level synchronization', 'Automated purchase ordering', 'Multi-user roles and permissions', 'Financial ledger and report generation']
+    features: ['Real-time stock level synchronization', 'Automated purchase ordering', 'Multi-user roles and permissions', 'Financial ledger and report generation'],
+    liveUrl: 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/',
+    liveUrlText: 'Launch Inventory Enterprise OS'
   },
   {
     category: 'Websites',
@@ -96,6 +102,20 @@ const Portfolio = () => {
                   <li key={idx}>{f}</li>
                 ))}
               </ul>
+
+              {activeProject.liveUrl && (
+                <div style={{ marginTop: '2rem' }}>
+                  <a 
+                    href={activeProject.liveUrl === 'https://inventory-web--protech-website-38a37.us-east4.hosted.app/' ? getInventoryLink() : activeProject.liveUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-primary"
+                    style={{ textDecoration: 'none', display: 'inline-flex', gap: '0.5rem' }}
+                  >
+                    🌐 {activeProject.liveUrlText || 'Launch Live Application'} ↗
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
